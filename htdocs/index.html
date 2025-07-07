@@ -1,0 +1,143 @@
+<!DOCTYPE html>    
+<html lang="zh-CN">    
+<head>    
+    <meta charset="UTF-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <title>Tinyhttpd 服务器</title>    
+    <style>    
+        body {    
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+            max-width: 800px;    
+            margin: 0 auto;    
+            padding: 20px;    
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);    
+            color: #333;    
+            min-height: 100vh;    
+        }    
+        .container {    
+            background: white;    
+            padding: 30px;    
+            border-radius: 10px;    
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);    
+        }    
+        h1 {    
+            color: #4a5568;    
+            text-align: center;    
+            margin-bottom: 30px;    
+        }    
+        .welcome {    
+            background: #f7fafc;    
+            padding: 20px;    
+            border-radius: 8px;    
+            border-left: 4px solid #4299e1;    
+            margin-bottom: 30px;    
+        }    
+        .cgi-demo {    
+            background: #fff5f5;    
+            padding: 20px;    
+            border-radius: 8px;    
+            border-left: 4px solid #f56565;    
+            margin-bottom: 20px;  
+        }  
+        .check-demo {  
+            background: #f0fff4;  
+            padding: 20px;  
+            border-radius: 8px;  
+            border-left: 4px solid #48bb78;  
+        }  
+        .form-group {    
+            margin-bottom: 15px;    
+        }    
+        label {    
+            display: block;    
+            margin-bottom: 5px;    
+            font-weight: bold;    
+        }    
+        input[type="text"] {    
+            width: 100%;    
+            padding: 10px;    
+            border: 2px solid #e2e8f0;    
+            border-radius: 5px;    
+            font-size: 16px;    
+        }    
+        input[type="text"]:focus {    
+            outline: none;    
+            border-color: #4299e1;    
+        }    
+        input[type="submit"] {    
+            background: #4299e1;    
+            color: white;    
+            padding: 12px 24px;    
+            border: none;    
+            border-radius: 5px;    
+            cursor: pointer;    
+            font-size: 16px;    
+            transition: background 0.3s;    
+        }    
+        input[type="submit"]:hover {    
+            background: #3182ce;    
+        }  
+        .check-demo input[type="submit"] {  
+            background: #48bb78;  
+        }  
+        .check-demo input[type="submit"]:hover {  
+            background: #38a169;  
+        }  
+        .info {    
+            margin-top: 30px;    
+            padding: 15px;    
+            background: #edf2f7;    
+            border-radius: 5px;    
+            font-size: 14px;    
+        }    
+    </style>    
+</head>    
+<body>    
+    <div class="container">    
+        <h1>Tinyhttpd Web 服务器</h1>    
+            
+        <div class="welcome">    
+            <h2>欢迎访问 Tinyhttpd!</h2>    
+            <p>这是一个轻量级的HTTP服务器，专为学习网络编程和HTTP协议而设计。</p>    
+            <p>服务器正在端口 4000 上运行，支持静态文件服务和CGI脚本执行。</p>    
+        </div>    
+    
+        <div class="cgi-demo">    
+            <h2>CGI 演示 - 颜色生成器</h2>    
+            <p>测试动态内容生成功能，输入一个颜色名称：</p>    
+                
+            <form action="color.cgi" method="POST">    
+                <div class="form-group">    
+                    <label for="color">颜色名称:</label>    
+                    <input type="text" id="color" name="color" placeholder="例如: red, blue, green..." required>    
+                </div>    
+                <input type="submit" value="生成颜色页面">    
+            </form>    
+        </div>  
+  
+        <div class="check-demo">  
+            <h2>CGI 演示 - 系统检查</h2>  
+            <p>测试系统信息和环境变量检查功能：</p>  
+              
+            <form action="check.cgi" method="GET">  
+                <div class="form-group">  
+                    <label for="check-type">检查类型:</label>  
+                    <input type="text" id="check-type" name="type" placeholder="例如: env, time, system..." value="env">  
+                </div>  
+                <input type="submit" value="执行系统检查">  
+            </form>  
+        </div>  
+    
+        <div class="info">    
+            <h3>服务器信息</h3>    
+            <ul>    
+                <li><strong>服务器:</strong> Tinyhttpd v0.1.0</li>    
+                <li><strong>支持方法:</strong> GET, POST</li>    
+                <li><strong>CGI支持:</strong> 是</li>    
+                <li><strong>文档根目录:</strong> htdocs/</li>  
+                <li><strong>CGI 脚本:</strong> color.cgi, check.cgi</li>  
+            </ul>    
+        </div>    
+    </div>    
+</body>    
+</html>
